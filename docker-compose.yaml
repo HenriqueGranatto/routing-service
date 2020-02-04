@@ -5,7 +5,7 @@ services:
         build: 
             context: ./dockerfiles
             dockerfile: DockerfileOSRM
-            image: osrm:latest
+        image: osrm:latest
         command: osrm-routed --algorithm=MLD brazil.osrm 
         restart: always
         ports: 
@@ -17,7 +17,7 @@ services:
         build: 
             context: ./dockerfiles
             dockerfile: DockerfileVROOM
-            image: vroom:latest
+        image: vroom:latest
         networks: 
             - husky
 
@@ -25,7 +25,7 @@ services:
         build: 
             context: ./dockerfiles
             dockerfile: DockerfileVROOMAPI
-            image: vroomAPI:latest
+        image: vroomAPI:latest
         command: npm start
         restart: always
         ports: 
