@@ -4,6 +4,8 @@ RUN apt-get update
 RUN apt-get install -y libboost-all-dev build-essential git
 RUN git clone https://github.com/VROOM-Project/vroom.git
 
+RUN git checkout release/1.5
+
 WORKDIR /vroom
 
 RUN cd src && make 
