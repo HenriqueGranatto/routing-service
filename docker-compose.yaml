@@ -32,7 +32,7 @@ services:
         build: 
             context: ./dockerfiles
             dockerfile: DockerfileVROOMAPI
-        image: vroomAPI:latest
+        image: api:latest
         restart: always
         command: npm start
         restart: always
