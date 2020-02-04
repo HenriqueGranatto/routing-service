@@ -22,7 +22,8 @@ services:
             context: ./dockerfiles
             dockerfile: DockerfileVROOM
         image: vroom:latest
-        depends_on: osrm
+        depends_on: 
+            - osrm
         networks: 
             - husky
 
@@ -33,7 +34,8 @@ services:
         image: vroomAPI:latest
         command: npm start
         restart: always
-        depends_on: vroom
+        depends_on: 
+            - vroom
         ports: 
             - "3000:3000"
         networks: 
