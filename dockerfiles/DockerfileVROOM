@@ -6,6 +6,4 @@ RUN git clone --depth 1 https://github.com/VROOM-Project/vroom.git
 
 WORKDIR /vroom
 
-RUN git checkout v1.5.0
-
 RUN cd src && make 
