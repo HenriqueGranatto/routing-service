@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 RUN apt-get update
-RUN apt-get install -y libboost-all-dev build-essential git
+RUN apt-get install -y libboost-all-dev build-essential git nodejs npm
 RUN git clone https://github.com/VROOM-Project/vroom.git
 
 WORKDIR /vroom
@@ -12,3 +12,9 @@ RUN cd src && make
 WORKDIR /vroom
 
 RUN ./bin/vroom -a =car:35.222.24.235 -p =car:5000
+
+RUN git clone https://github.com/HenriqueGranatto/vroom-express.git
+
+WORKDIR /vroom-express
+
+RUN npm install
