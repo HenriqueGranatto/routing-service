@@ -19,7 +19,3 @@ RUN wget http://download.geofabrik.de/south-america/brazil-latest.osm.pbf
 RUN osrm-extract brazil-latest.osm.pbf
 RUN osrm-partition brazil-latest.osrm
 RUN osrm-customize brazil-latest.osrm
-
-RUN osrm-routed --algorithm=MLD brazil.osrm 
-
-EXPOSE 5000
