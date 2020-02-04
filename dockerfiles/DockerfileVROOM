@@ -3,6 +3,9 @@ FROM ubuntu:18.04
 RUN apt-get update
 RUN apt-get install -y libboost-all-dev build-essential git
 RUN git clone --depth 1 https://github.com/VROOM-Project/vroom.git
+
+WORKDIR /vroom
+
 RUN git checkout v1.5.0
 
-RUN cd vroom/src && make 
+RUN cd src && make 
