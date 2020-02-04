@@ -11,4 +11,4 @@ RUN cd src && make
 
 WORKDIR /vroom
 
-RUN ./bin/vroom vroom -a =car:35.222.24.235 -p =car:5000
+RUN ./bin/vroom -a =car:35.222.24.235 -p =car:5000
