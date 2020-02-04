@@ -22,7 +22,6 @@ services:
             context: ./dockerfiles
             dockerfile: DockerfileVROOM
         image: vroom:latest
-        restart: always
         depends_on: 
             - osrm
         networks: 
