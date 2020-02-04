@@ -7,4 +7,8 @@ RUN git clone https://github.com/VROOM-Project/vroom.git
 WORKDIR /vroom
 
 RUN git checkout release/1.5
-RUN cd src && make 
+RUN cd src && make
+
+WORKDIR /vroom
+
+RUN ./bin/vroom vroom -a 35.222.24.235 -p 5000
