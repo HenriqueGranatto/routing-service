@@ -22,6 +22,7 @@ services:
             context: ./dockerfiles
             dockerfile: DockerfileVROOM
         image: vroom:latest
+        restart: always
         depends_on: 
             - osrm
         networks: 
@@ -32,6 +33,7 @@ services:
             context: ./dockerfiles
             dockerfile: DockerfileVROOMAPI
         image: vroomAPI:latest
+        restart: always
         command: npm start
         restart: always
         depends_on: 
