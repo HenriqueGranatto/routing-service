@@ -10,7 +10,7 @@ services:
             context: ./dockerfiles
             dockerfile: DockerfileOSRM
         image: osrm:latest
-        command: osrm-routed --algorithm=MLD brazil-latest.osrm
+        command: osrm-routed --max-table-size=100000 --max-viaroute-size=100000 --algorithm=MLD brazil-latest.osrm
         restart: always
         ports:
             - "5000"
