@@ -16,5 +16,3 @@ RUN echo "Fazendo download do vroom-express"
 RUN git clone https://github.com/HenriqueGranatto/vroom-express.git
 
 RUN cd vroom-express && npm install
-
-CMD ["node", "vroom-express/src/index.js"]
