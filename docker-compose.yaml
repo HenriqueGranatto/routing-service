@@ -10,6 +10,7 @@ services:
             context: ./dockerfiles
             dockerfile: DockerfileOSRM
         image: osrm:latest
+        container_name: osrm
         command: osrm-routed --max-table-size=100000 --max-viaroute-size=100000 --algorithm=MLD brazil-latest.osrm
         restart: always
         ports:
@@ -22,8 +23,15 @@ services:
             context: ./dockerfiles
             dockerfile: DockerfileVROOM
         image: vroom:latest
+        container_name: vroom
         command: node vroom-express/src/index.js
         restart: always
+        cpu_count: 8
+        deploy:
+            resources:
+              limits:
+                cpus: '1'
+                memory: 30G
         ports:
             - "3000:3000"
         depends_on:
