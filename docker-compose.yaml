@@ -15,8 +15,10 @@ services:
         restart: always
         cpu_count: 8
         cpu_percent: 90
-        cpus: 8
         mem_limit: 20g
+        deploy:
+            limits:
+                cpus: 8
         ports:
             - "5000:5000"
         networks:
@@ -32,8 +34,10 @@ services:
         restart: always
         cpu_count: 8
         cpu_percent: 90
-        cpus: 8
         mem_limit: 20g
+        deploy:
+            limits:
+                cpus: 8
         ports:
             - "3000:3000"
         depends_on:
