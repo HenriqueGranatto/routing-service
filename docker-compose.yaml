@@ -16,7 +16,7 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: 8
+                    cpus: "8"
                     memory: 20G
         ports:
             - "5000:5000"
@@ -34,7 +34,7 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: 8
+                    cpus: "8"
                     memory: 20G
         ports:
             - "3000:3000"
