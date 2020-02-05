@@ -1,50 +1,32 @@
 version: "3.7"
 
-networks: 
+networks:
     husky:
         name: "husky"
 
-volumes: 
-    - /bin
-
-services: 
+services:
     osrm:
-        build: 
+        build:
             context: ./dockerfiles
             dockerfile: DockerfileOSRM
         image: osrm:latest
-        command: osrm-routed --algorithm=MLD brazil-latest.osrm 
+        command: osrm-routed --algorithm=MLD brazil-latest.osrm
         restart: always
-        ports: 
+        ports:
             - "5000:5000"
-        networks: 
+        networks:
             - husky
 
     vroom:
-        build: 
+        build:
             context: ./dockerfiles
             dockerfile: DockerfileVROOM
         image: vroom:latest
+        command: node vroom-express/src/index.js
         restart: always
-        depends_on: 
+        ports:
+            - "3000:3000"
+        depends_on:
             - osrm
-        networks: 
+        networks:
             - husky
-        volumes: 
-            - "/bin/vroom"
-
-    vroomAPI:
-        build: 
-            context: ./dockerfiles
-            dockerfile: DockerfileVROOMAPI
-        image: api:latest
-        restart: always
-        command: npm start
-        depends_on: 
-            - vroom
-        ports: 
-            - "80:3000"
-        networks: 
-            - husky
-        volumes: 
-            - "/bin/vroom"
