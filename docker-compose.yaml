@@ -27,11 +27,9 @@ services:
         command: node vroom-express/src/index.js
         restart: always
         cpu_count: 8
-        deploy:
-            resources:
-              limits:
-                cpus: '1'
-                memory: 30G
+        cpu_percent: 90
+        cpus: 8
+        mem_limit: 20g
         ports:
             - "3000:3000"
         depends_on:
