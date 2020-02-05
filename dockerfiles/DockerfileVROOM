@@ -14,5 +14,3 @@ WORKDIR /
 RUN git clone https://github.com/HenriqueGranatto/vroom-express.git
 
 RUN npm install
-
-CMD ["node", "vroom-express/src/index.js"]
