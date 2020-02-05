@@ -11,7 +11,7 @@ services:
             dockerfile: DockerfileOSRM
         image: osrm:latest
         container_name: osrm
-        command: osrm-routed --max-table-size=100000 --max-viaroute-size=100000 --algorithm=MLD brazil-latest.osrm
+        command: osrm-routed --max-table-size=100000 --max-viaroute-size=100000 --shared-memory=yes --threads=7 --algorithm=MLD brazil-latest.osrm
         restart: always
         deploy:
             resources:
