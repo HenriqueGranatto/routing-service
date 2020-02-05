@@ -13,6 +13,10 @@ services:
         container_name: osrm
         command: osrm-routed --max-table-size=100000 --max-viaroute-size=100000 --algorithm=MLD brazil-latest.osrm
         restart: always
+        cpu_count: 8
+        cpu_percent: 90
+        cpus: 8
+        mem_limit: 20g
         ports:
             - "5000:5000"
         networks:
