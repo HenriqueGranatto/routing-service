@@ -9,16 +9,18 @@ services:
         build:
             context: ./dockerfiles
             dockerfile: DockerfileOSRM
+        env_file: 
+            - .env
         image: osrm:latest
         container_name: osrm
-        command: osrm-routed --max-table-size=100000 --max-viaroute-size=100000 --shared-memory=yes --threads=7 --algorithm=MLD brazil-latest.osrm
+        command: osrm-routed --max-table-size=${MAX_JOBS} --max-viaroute-size=${MAX_JOBS} --shared-memory=yes --threads=${CPU_CORES} --algorithm=MLD ${OSRM_FILE_NAME}.osrm
         restart: always
         deploy:
             resources:
                 limits:
                     memory: 20G
         ports:
-            - "5000:5000"
+            - "${OSRM_PORT}:5000"
         networks:
             - husky
 
@@ -26,6 +28,8 @@ services:
         build:
             context: ./dockerfiles
             dockerfile: DockerfileVROOM
+        env_file: 
+            - .env
         image: vroom:latest
         container_name: vroom
         command: /usr/sbin/sshd -D
@@ -36,7 +40,7 @@ services:
                     cpus: "7"
                     memory: 20G
         ports:
-            - "4000:22"
+            - "${VROOM_PORT}:22"
         depends_on:
             - osrm
         networks:
@@ -46,6 +50,8 @@ services:
         build:
             context: ./dockerfiles
             dockerfile: DockerfileAPI
+        env_file: 
+            - .env
         image: api:latest
         container_name: api
         command: npm start
@@ -56,7 +62,7 @@ services:
                     cpus: "1"
                     memory: 20G
         ports:
-            - "3000:3000"
+            - "${API_PORT}:3000"
         depends_on:
             - osrm
         networks:

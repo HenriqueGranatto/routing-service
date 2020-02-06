@@ -19,8 +19,8 @@ RUN cd .. && mkdir brazil
 
 WORKDIR /osrm-backend/brazil
 
-RUN wget http://download.geofabrik.de/south-america/brazil-latest.osm.pbf
+RUN wget ${OSRM_FILE}
 
-RUN osrm-extract brazil-latest.osm.pbf -p /osrm-backend/profiles/car.lua 
-RUN osrm-partition brazil-latest.osrm
-RUN osrm-customize brazil-latest.osrm
+RUN osrm-extract ${OSRM_FILE_NAME}.osm.pbf -p /osrm-backend/profiles/car.lua 
+RUN osrm-partition ${OSRM_FILE_NAME}.osrm
+RUN osrm-customize ${OSRM_FILE_NAME}.osrm
