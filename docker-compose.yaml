@@ -37,7 +37,7 @@ services:
                     cpus: "6"
                     memory: 20G
         ports:
-            - "3000:3000"
+            - "4000:22"
         depends_on:
             - osrm
         networks:
