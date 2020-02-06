@@ -3,10 +3,13 @@ FROM node:slim
 RUN apt-get update
 RUN apt install -y git 
 
+# DOWNLOAD API
 RUN git clone ${API_GIT}
 
 WORKDIR /vroom-express
 
+# COPY ENV FILE
 COPY ./.env ./
 
+# INSTALL DEPENDENCIES
 RUN npm install
