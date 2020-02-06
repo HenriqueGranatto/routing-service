@@ -16,7 +16,7 @@ services:
         deploy:
             resources:
                 limits:
-                    cpus: "7"
+                    cpus: "1"
                     memory: 20G
         ports:
             - "5000:5000"
@@ -29,12 +29,32 @@ services:
             dockerfile: DockerfileVROOM
         image: vroom:latest
         container_name: vroom
-        command: node vroom-express/src/index.js
+        command: /usr/sbin/sshd -D
         restart: always
         deploy:
             resources:
                 limits:
-                    cpus: "7"
+                    cpus: "6"
+                    memory: 20G
+        ports:
+            - "3000:3000"
+        depends_on:
+            - osrm
+        networks:
+            - husky
+
+    api:
+        build:
+            context: ./dockerfiles
+            dockerfile: DockerfileAPI
+        image: api:latest
+        container_name: api
+        command: npm start
+        restart: always
+        deploy:
+            resources:
+                limits:
+                    cpus: "1"
                     memory: 20G
         ports:
             - "3000:3000"
