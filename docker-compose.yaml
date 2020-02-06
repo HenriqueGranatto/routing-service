@@ -13,7 +13,7 @@ services:
             - .env
         image: osrm:latest
         container_name: osrm
-        command: osrm-routed --max-table-size=${MAX_JOBS} --max-viaroute-size=${MAX_JOBS} --shared-memory=yes --threads=${CPU_CORES} --algorithm=MLD ${OSRM_FILE_NAME}.osrm
+        command: osrm-routed --max-table-size=${MAX_JOBS} --max-viaroute-size=${MAX_JOBS} --algorithm=MLD ${OSRM_FILE_NAME}.osrm
         restart: always
         deploy:
             resources:
