@@ -31,6 +31,9 @@ services:
         build:
             context: ./dockerfiles
             dockerfile: DockerfileVROOM
+            args:
+                VROOM_SSH_USER: ${VROOM_SSH_USER}
+                VROOM_SSH_PASSWORD: ${VROOM_SSH_PASSWORD}
         env_file: 
             - .env
         image: vroom:latest
@@ -53,6 +56,8 @@ services:
         build:
             context: ./dockerfiles
             dockerfile: DockerfileAPI
+            args:
+                API_GIT: ${API_GIT}
         env_file: 
             - .env
         image: api:latest
