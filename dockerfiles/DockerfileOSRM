@@ -25,7 +25,7 @@ RUN cd .. && mkdir ${OSRM_FILE_NAME}
 # DOWNLOAD REGION DATA AND PROCESS
 WORKDIR /osrm-backend/${OSRM_FILE_NAME}
 
-RUN wget ${OSRM_FILE}
+RUN wget "${OSRM_FILE}"
 
 RUN osrm-extract ${OSRM_FILE_NAME}.osm.pbf -p /osrm-backend/profiles/car.lua 
 RUN osrm-partition ${OSRM_FILE_NAME}.osrm
