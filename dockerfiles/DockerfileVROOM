@@ -20,8 +20,6 @@ WORKDIR /
 
 RUN mkdir /var/run/sshd
 
-RUN echo ${VROOM_SSH_USER} ${VROOM_SSH_PASSWORD}
-
 RUN echo 'root:root' | chpasswd
 
 RUN sed -ri 's/^#?PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config
