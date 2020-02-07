@@ -1,5 +1,8 @@
 FROM ubuntu:18.04
 
+ARG VROOM_SSH_USER
+ARG VROOM_SSH_PASSWORD
+
 RUN apt-get update
 RUN apt-get install -y libboost-all-dev build-essential git nodejs npm openssh-server
 

@@ -1,5 +1,8 @@
 version: "3.7"
 
+env_file: 
+    - .env
+
 networks:
     husky:
         name: "husky"
@@ -12,8 +15,6 @@ services:
             args:
                 OSRM_FILE_NAME: ${OSRM_FILE_NAME}
                 OSRM_FILE: ${OSRM_FILE}
-        env_file: 
-            - .env
         image: osrm:latest
         container_name: osrm
         command: osrm-routed --max-table-size=${MAX_JOBS} --max-viaroute-size=${MAX_JOBS} --algorithm=MLD ${OSRM_FILE_NAME}.osrm
@@ -34,8 +35,6 @@ services:
             args:
                 VROOM_SSH_USER: ${VROOM_SSH_USER}
                 VROOM_SSH_PASSWORD: ${VROOM_SSH_PASSWORD}
-        env_file: 
-            - .env
         image: vroom:latest
         container_name: vroom
         command: /usr/sbin/sshd -D
@@ -58,8 +57,6 @@ services:
             dockerfile: DockerfileAPI
             args:
                 API_GIT: ${API_GIT}
-        env_file: 
-            - .env
         image: api:latest
         container_name: api
         command: npm start
