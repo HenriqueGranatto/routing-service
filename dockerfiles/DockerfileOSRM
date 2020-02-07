@@ -1,5 +1,8 @@
 FROM ubuntu:18.04
 
+ENV OSRM_FILE_NAME
+ENV OSRM_FILE
+
 RUN apt-get update
 RUN apt-get install -y wget build-essential git cmake pkg-config \
 libbz2-dev libstxxl-dev libstxxl1v5 libxml2-dev \
