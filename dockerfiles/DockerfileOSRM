@@ -1,8 +1,5 @@
 FROM ubuntu:18.04
 
-ENV OSRM_FILE_NAME
-ENV OSRM_FILE
-
 RUN apt-get update
 RUN apt-get install -y wget build-essential git cmake pkg-config \
 libbz2-dev libstxxl-dev libstxxl1v5 libxml2-dev \
@@ -19,6 +16,10 @@ WORKDIR /osrm-backend/build
 RUN cmake .. -DCMAKE_BUILD_TYPE=Release
 RUN cmake --build .
 RUN cmake --build . --target install
+
+ARG OSRM_FILE_NAME
+ARG OSRM_FILE
+
 RUN cd .. && mkdir ${OSRM_FILE_NAME}
 
 # DOWNLOAD REGION DATA AND PROCESS

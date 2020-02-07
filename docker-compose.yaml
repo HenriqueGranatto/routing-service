@@ -9,6 +9,9 @@ services:
         build:
             context: ./dockerfiles
             dockerfile: DockerfileOSRM
+            args:
+                OSRM_FILE_NAME: ${OSRM_FILE_NAME}
+                OSRM_FILE: ${OSRM_FILE}
         env_file: 
             - .env
         image: osrm:latest
