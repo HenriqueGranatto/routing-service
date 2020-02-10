@@ -13,7 +13,7 @@ services:
                 OSRM_FILE_NAME: ${OSRM_FILE_NAME}
                 OSRM_FILE: ${OSRM_FILE}
         env_file: 
-            - dockerfiles/.env
+            - ./dockerfiles/.env
         image: osrm:latest
         container_name: osrm
         command: osrm-routed --max-table-size=${MAX_JOBS} --max-viaroute-size=${MAX_JOBS} --algorithm=MLD ${OSRM_FILE_NAME}.osrm
@@ -35,7 +35,7 @@ services:
                 VROOM_SSH_USER: ${VROOM_SSH_USER}
                 VROOM_SSH_PASSWORD: ${VROOM_SSH_PASSWORD}
         env_file: 
-            - dockerfiles/.env
+            - ./dockerfiles/.env
         image: vroom:latest
         container_name: vroom
         command: /usr/sbin/sshd -D
@@ -59,7 +59,7 @@ services:
             args:
                 API_GIT: ${API_GIT}
         env_file: 
-            - dockerfiles/.env
+            - ./dockerfiles/.env
         image: api:latest
         container_name: api
         command: npm start
