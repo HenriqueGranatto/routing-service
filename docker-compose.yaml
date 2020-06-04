@@ -59,6 +59,7 @@ services:
         ports:
             - 6000
         environment:
+            ME_CONFIG_MONGODB_PORT: 7000
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: root
 
