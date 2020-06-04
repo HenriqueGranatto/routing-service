@@ -72,6 +72,8 @@ services:
         environment:
             ME_CONFIG_MONGODB_ADMINUSERNAME: root
             ME_CONFIG_MONGODB_ADMINPASSWORD: root
+        depends_on:
+            - mongo
 
     api:
         build:
@@ -94,5 +96,7 @@ services:
             - "${API_PORT}:3000"
         depends_on:
             - osrm
+            - mongo
+            - mongo-express
         networks:
             - husky
