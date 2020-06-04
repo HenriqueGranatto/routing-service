@@ -101,6 +101,6 @@ services:
         depends_on:
             - osrm
             - mongo
-            - mongo-express
+            # - mongo-express
         networks:
             - husky
