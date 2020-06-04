@@ -56,25 +56,28 @@ services:
         image: mongo
         restart: always
         container_name: mongo
+        ports:
+            - 6000:27017
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: root
         networks:
             - husky
 
-    mongo-express:
-        image: mongo-express
-        restart: always
-        container_name: mongo-admin
-        ports:
-            - 7000:8081
-        environment:
-            ME_CONFIG_MONGODB_ADMINUSERNAME: root
-            ME_CONFIG_MONGODB_ADMINPASSWORD: root
-        depends_on:
-            - mongo
-        networks:
-            - husky
+    # mongo-express:
+    #     image: mongo-express
+    #     restart: always
+    #     container_name: mongo-admin
+    #     ports:
+    #         - 7000:8081
+    #     environment:
+    #         ME_CONFIG_MONGODB_PORT: 6000
+    #         ME_CONFIG_MONGODB_ADMINUSERNAME: root
+    #         ME_CONFIG_MONGODB_ADMINPASSWORD: root
+    #     depends_on:
+    #         - mongo
+    #     networks:
+    #         - husky
 
     api:
         build:
