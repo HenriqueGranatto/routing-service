@@ -56,7 +56,6 @@ services:
         image: mongo
         restart: always
         container_name: mongo
-        command: mongod --port 6000
         ports:
             - 27017
         environment:
