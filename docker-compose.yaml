@@ -57,6 +57,8 @@ services:
         restart: always
         container_name: mongo
         command: mongod --port 6000
+        ports:
+            - 6000:27017
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
             MONGO_INITDB_ROOT_PASSWORD: root
