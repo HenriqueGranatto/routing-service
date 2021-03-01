@@ -41,12 +41,12 @@ chmod +x /usr/local/bin/docker-compose
 ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 
 # REMOVE TODAS AS IMAGENS E CONTAINERS DA VM
-# echo "------------------------------------"
-# echo "-- Removendo resíduos de serviços --"
-# echo "------------------------------------"
-# docker stop $(docker ps -aq)
-# docker rm $(docker ps -aq)
-# docker rmi $(docker images -q)
+echo "------------------------------------"
+echo "-- Removendo resíduos de serviços --"
+echo "------------------------------------"
+docker stop $(docker ps -aq)
+docker rm $(docker ps -aq)
+docker rmi $(docker images -q)
 
 # INICIANDO O ELASTICSEARCH, KIBANA E O ETL PELO DOCKER COMPOSE
 echo "-----------------------------------"
