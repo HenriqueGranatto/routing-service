@@ -6,15 +6,15 @@ networks:
 
 services:
     osrm:
-        build:
-            context: ./dockerfiles
-            dockerfile: DockerfileOSRM
-            args:
-                OSRM_FILE_NAME: ${OSRM_FILE_NAME}
-                OSRM_FILE: ${OSRM_FILE}
-        env_file: 
-            - ./dockerfiles/.env
-        image: osrm:latest
+#         build:
+#             context: ./dockerfiles
+#             dockerfile: DockerfileOSRM
+#             args:
+#                 OSRM_FILE_NAME: ${OSRM_FILE_NAME}
+#                 OSRM_FILE: ${OSRM_FILE}
+#         env_file: 
+#             - ./dockerfiles/.env
+        image: henriquegranatto/osrm:latest
         container_name: osrm
         command: osrm-routed --max-table-size=${MAX_JOBS} --max-viaroute-size=${MAX_JOBS} --algorithm=MLD ${OSRM_FILE_NAME}.osrm
         restart: always
