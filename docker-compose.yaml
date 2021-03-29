@@ -59,9 +59,9 @@ services:
         ports:
             - 6000:27017
         environment:
-            -MONGO_INITDB_ROOT_USERNAME=root
-            -MONGO_INITDB_ROOT_PASSWORD=root
-            -MONGO_INITDB_DATABASE=vroom
+            MONGO_INITDB_ROOT_USERNAME: root
+            MONGO_INITDB_ROOT_PASSWORD: root
+            MONGO_INITDB_DATABASE: 'vroom'
         networks:
             - husky
 
