@@ -72,9 +72,9 @@ services:
         ports:
             - 7000:8081
         environment:
-            -ME_CONFIG_MONGODB_URL=mongodb://root:root@${SUBDOMAIN_ADDRESS}
-            -ME_CONFIG_BASICAUTH_USERNAME=root
-            -ME_CONFIG_BASICAUTH_PASSWORD=root
+            ME_CONFIG_MONGODB_PORT: 6000
+            ME_CONFIG_BASICAUTH_USERNAME: 'root'
+            ME_CONFIG_BASICAUTH_PASSWORD: 'root'
         depends_on:
             - mongo
         networks:
