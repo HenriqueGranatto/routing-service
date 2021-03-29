@@ -86,7 +86,7 @@ services:
             - "${API_PORT}:3000"
         depends_on:
             - osrm
+            - vroom
             - mongo
-            - mongo-express
         networks:
             - husky
