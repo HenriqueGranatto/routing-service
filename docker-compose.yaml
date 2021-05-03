@@ -6,15 +6,14 @@ networks:
 
 services:
     osrm:
-#         build:
-#             context: ./dockerfiles
-#             dockerfile: DockerfileOSRM
-#             args:
-#                 OSRM_FILE_NAME: ${OSRM_FILE_NAME}
-#                 OSRM_FILE: ${OSRM_FILE}
-#         env_file: 
-#             - ./dockerfiles/.env
-        image: henriquegranatto/osrm:latest
+        build:
+            context: ./osrm
+            dockerfile: Dockerfile
+            args:
+                OSRM_FILE_NAME: ${OSRM_FILE_NAME}
+                OSRM_FILE: ${OSRM_FILE}
+        env_file: 
+            - ./osrm/.env
         container_name: osrm
         command: osrm-routed --max-table-size=${MAX_JOBS} --max-viaroute-size=${MAX_JOBS} --algorithm=MLD ${OSRM_FILE_NAME}.osrm
         restart: always
@@ -29,13 +28,13 @@ services:
 
     vroom:
         build:
-            context: ./dockerfiles
-            dockerfile: DockerfileVROOM
+            context: ./vroom
+            dockerfile: Dockerfile
             args:
                 VROOM_SSH_USER: ${VROOM_SSH_USER}
                 VROOM_SSH_PASSWORD: ${VROOM_SSH_PASSWORD}
         env_file: 
-            - ./dockerfiles/.env
+            - ./vroom/.env
         image: vroom:latest
         container_name: vroom
         command: /usr/sbin/sshd -D
@@ -56,6 +55,8 @@ services:
         image: mongo
         restart: always
         container_name: mongo
+        volumes: 
+            - ./mongo/volume:/data/db
         ports:
             - 6000:27017
         environment:
@@ -66,12 +67,12 @@ services:
 
     api:
         build:
-            context: ./dockerfiles
-            dockerfile: DockerfileAPI
+            context: ./api
+            dockerfile: Dockerfile
             args:
                 API_GIT: ${API_GIT}
         env_file: 
-            - ./dockerfiles/.env
+            - ./api/.env
         image: api:latest
         container_name: api
         command: npm start
