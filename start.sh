@@ -7,7 +7,7 @@ set +a
 
 # INSTALANDO AS DEPENDÊNCIAS
 echo "----------------------------"
-echo "-- Atualizando o ambiente --"
+echo "-- Atualidando o ambiente --"
 echo "----------------------------"
 apt-get update -y
 apt-get install -y nano git zip unzip
